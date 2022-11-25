@@ -6,7 +6,7 @@
 
 wpspaster富文本编辑器图文粘贴软件，适用tinymce等
 
-- [在线体验](http://xoobom.com:81/#/rich-text-editor/tinymce) 
+- [在线体验](http://xoobom.com:8020/#/rich-text-editor/tinymce) 
 
 
 
