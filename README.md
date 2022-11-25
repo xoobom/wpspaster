@@ -4,7 +4,7 @@
 
 #### 简介
 
-wpspaster富文本编辑器图文粘贴软件，适用tinymce等
+富文本编辑器图文粘贴软件，支持从Word、WPS图文复制然后粘贴到Tinymce。适用Window、Mac
 
 - [在线体验](http://xoobom.com:8020/#/rich-text-editor/tinymce) 
 
