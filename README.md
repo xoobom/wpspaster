@@ -1,14 +1,12 @@
-<p align="center">
-  <img width="100" src="./img/xoobom-logo.png">
-</p>
+<div align="center">
+  <img width="130" height="130" src="./img/wpspaster-logo.png">
+</div>
 
 #### 简介
 
 图文粘贴软件，支持从Word、WPS图文复制后粘贴到Tinymce富文本编辑器。支持Chrome、360、Edge、Firefox浏览器。适用Window、Mac
 
 - [在线体验](http://xoobom.com:8020/#/rich-text-editor/tinymce) 
-
-
 
 #### 常见问题
 
@@ -28,8 +26,6 @@ sudo xattr -d com.apple.quarantine /Applications/wpspaster.app
 
 参考[https://blog.csdn.net/wu347771769/article/details/115292816](https://blog.csdn.net/wu347771769/article/details/115292816)
 
-
-
 #### 联系我们
 
 wpspaster用户交流QQ群：278919640
@@ -40,7 +36,3 @@ QQ：3194249968
   <img width="250" src="./img/QQ群.jpeg">
   <img width="250" src="./img/QQ.jpg">
 </div>
-
-
-
-
