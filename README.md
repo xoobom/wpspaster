@@ -7,6 +7,9 @@
 图文一键粘贴软件，支持从Word、WPS图文复制后粘贴到Tinymce富文本编辑器。支持Chrome、360、Edge、Firefox浏览器。适用Window、Mac
 
 - [在线体验](http://xoobom.com:8020/#/rich-text-editor/tinymce) 
+- [gitee](https://gitee.com/xoobom/wpspaster)
+- [github](https://github.com/xoobom/wpspaster)
+- [官网](http://xoobom.com/product/)
 
 #### 常见问题
 
