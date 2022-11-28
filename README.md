@@ -37,6 +37,7 @@ wpspaster用户交流QQ群：278919640
 QQ：3194249968
 
 <div>
-  <img width="250" src="./img/QQ群.jpeg">
+  <img width="250" src="./img/QQ群.jpeg?t=2022-11-28">
   <img width="250" src="./img/QQ.jpg">
 </div>
+
