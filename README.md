@@ -1,6 +1,7 @@
 <div align="center">
-  <img width="130" height="130" src="./img/wpspaster-logo.png">
+  <img width="130" height="130" src="./img/wpspaster-logo-circle.png">
 </div>
+
 
 #### 简介
 
