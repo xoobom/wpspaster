@@ -31,6 +31,8 @@
 
 企业、政府标准版：最下方联系我们
 
+[点击下载](https://gitee.com/xoobom/wpspaster/releases/tag/v1.0.0)
+
 
 
 #### 常见问题
