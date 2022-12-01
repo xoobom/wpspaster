@@ -11,11 +11,9 @@
 - [github](https://github.com/xoobom/wpspaster)
 - [官网](http://xoobom.com/product/)
 
- 
-
 #### 常见问题
 
-###### 1、mac安装后打开提示已损坏？
+##### 1、mac安装后打开提示已损坏？
 
 <div>
   <img width="250" src="./img/已损坏提示.jpeg">
@@ -33,7 +31,7 @@ sudo xattr -d com.apple.quarantine /Applications/wpspaster.app
 
 参考[https://blog.csdn.net/wu347771769/article/details/115292816](https://blog.csdn.net/wu347771769/article/details/115292816)
 
-###### 2、新版chrome随机报错跨域
+##### 2、新版chrome随机报错跨域
 
 报错详情：Access to XMLHttpRequest at 'http://127.0.0.1:9000/file/getStatus' from origin 'http://xoobom.com:8020' has been blocked by CORS policy: The request client is not a secure context and the resource is in more-private address space `local`.
 
@@ -42,8 +40,6 @@ sudo xattr -d com.apple.quarantine /Applications/wpspaster.app
 chrome://flags/#block-insecure-private-network-requests设为Disable
 
 参考https://zhuanlan.zhihu.com/p/414533145
-
-
 
 #### 联系我们
 
