@@ -7,10 +7,10 @@
 图文一键粘贴软件，支持从Word、WPS图文复制后一键粘贴到Tinymce、CKEditor、UEditor等富文本编辑器。支持Chrome、360、Edge、Firefox等现代浏览器。适用Window、Mac
 
 - [在线体验](http://xoobom.com:8020/#/rich-text-editor/tinymce) 
-- [软件下载](https://gitee.com/xoobom/wpspaster/releases)
+- [软件下载](https://github.com/xoobom/wpspaster/releases)
 - [gitee](https://gitee.com/xoobom/wpspaster)
 - [github](https://github.com/xoobom/wpspaster)
-- [官网](http://xoobom.com/product/)
+- [官网](http://xoobom.com/wpspaster/)
 
 <div>
   <img width="100%" src="./img/view.gif">
@@ -54,15 +54,6 @@ sudo xattr -d com.apple.quarantine /Applications/wpspaster.app
 
 参考[https://blog.csdn.net/wu347771769/article/details/115292816](https://blog.csdn.net/wu347771769/article/details/115292816)
 
-##### 2、新版chrome随机报错跨域
-
-报错详情：Access to XMLHttpRequest at 'http://127.0.0.1:9000/file/getStatus' from origin 'http://xoobom.com:8020' has been blocked by CORS policy: The request client is not a secure context and the resource is in more-private address space `local`.
-
-解决：
-
-chrome://flags/#block-insecure-private-network-requests设为Disable
-
-参考https://zhuanlan.zhihu.com/p/414533145
 
 #### 联系我们
 
