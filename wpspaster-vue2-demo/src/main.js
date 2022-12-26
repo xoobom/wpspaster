@@ -2,8 +2,8 @@
  * @Author: lifuhai fuhai.li@gientech.com
  * @Date: 2022-09-13 21:58:02
  * @LastEditors: lifuhai
- * @LastEditTime: 2022-12-24 23:51:25
- * @FilePath: \wpspaster-vue2-demo\src\main.js
+ * @LastEditTime: 2022-12-26 15:38:28
+ * @FilePath: /wpspaster-vue2-demo/src/main.js
  * @Description: main.js
  */
 import Vue from 'vue';
@@ -22,22 +22,6 @@ import './utils/error-log'; // error log
 import * as filters from './filters'; // global filters
 import dayjs from 'dayjs';
 Vue.prototype.$dayjs = dayjs; //日期格式化
-
-// firebase相关
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
-const firebaseConfig = {
-  apiKey: 'AIzaSyDZ85U-pb_35y1ovOcaYy0o1RH-bIGraOM',
-  authDomain: 'wpspaster-vue2-demo.firebaseapp.com',
-  projectId: 'wpspaster-vue2-demo',
-  storageBucket: 'wpspaster-vue2-demo.appspot.com',
-  messagingSenderId: '153305080301',
-  appId: '1:153305080301:web:1041210b8895c72973c7e4',
-  measurementId: 'G-BX7CBRS7X6',
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-Vue.prototype.$db = db;
 
 import VueSocketIO from 'vue-socket.io';
 import SocketIO from 'socket.io-client';
