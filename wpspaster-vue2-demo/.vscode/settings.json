@@ -1,0 +1,80 @@
+{
+  "emmet.syntaxProfiles": {
+    "vue-html": "html",
+    "vue": "html"
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "git.ignoreLegacyWarning": true,
+  "editor.minimap.enabled": true,
+  "window.menuBarVisibility": "default",
+  "liveServer.settings.donotVerifyTags": true,
+  // 控制是否将打开的编辑器显示为预览。预览编辑器将会重用至其被保留(例如，通过双击或编辑)，且其字体样式将为斜体。
+  "workbench.editor.enablePreview": false,
+  // 控制 Quick Open 中打开的编辑器是否显示为预览。预览编辑器可以重新使用，直到将其保留(例如，通过双击或编辑)。
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  // 控制编辑器是否在用户键入、粘贴或移动行时自动调整缩进。语言的缩进规则必须可用。
+  "editor.autoIndent": "full",
+  // 控制编辑器是否应自动设置粘贴内容的格式。格式化程序必须可用并且能设置文档中某一范围的格式。
+  "editor.formatOnPaste": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.accessibilitySupport": "off",
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+      // #vue组件中html代码格式化样式
+      "wrap_attributes": "auto", //也可以设置为“auto”，效果会不一样
+      "wrap_line_length": 200,
+      "end_with_newline": true,
+      "semi": true,
+      "singleQuote": true
+    }
+  },
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
+  "search.followSymlinks": false,
+  "javascript.preferences.quoteStyle": "double",
+  "typescript.preferences.quoteStyle": "double",
+  "git.autorefresh": false,
+  "git.enabled": true,
+  "workbench.editor.openPositioning": "left",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "explorer.confirmDelete": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.wordWrap": "on", //视野之内换行
+  //头部注释
+  "fileheader.customMade": {
+    "Author": "git config user.name", // git config中的: 用户名
+    "Date": "Do not edit", // 设置后默认设置文件生成时间
+    "LastEditTime": "Do not edit", // 设置后，保存文件更改默认更新最后编辑时间
+    "LastEditors": "git config user.name", // 设置后，保存文件更改默认更新最后编辑人
+    "FilePath": "Do not edit", // 设置后，默认生成文件相对于项目的路径
+    "Description": "",
+  },
+  "kite.showWelcomeNotificationOnStartup": false,
+}
