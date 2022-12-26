@@ -28,9 +28,23 @@
 
 #### 使用说明
 
-免费版：本地启http://127.0.0.1:8020 项目调试
+免费版：
 
-企业、政府标准版：最下方联系我们
+```
+本地启wpspaster-vue2-demo项目调试
+win启动：wpspaster-v1.1.0-win-free.exe
+mac启动：wpspaster-v1.1.0-mac-x64-free.dmg或者wpspaster-v1.1.0-mac-arm64-free.dmg
+```
+
+也可以用postman自测：
+
+<div align="center">
+  <img width="100%" src="./img/postman.jpeg">
+</div>
+
+
+
+企业、政府标准版：[详情](http://xoobom.com/wpspaster) 
 
 
 
@@ -53,6 +67,11 @@ sudo xattr -d com.apple.quarantine /Applications/wpspaster.app
 ```
 
 参考[https://blog.csdn.net/wu347771769/article/details/115292816](https://blog.csdn.net/wu347771769/article/details/115292816)
+
+##### 2、wpspaster有兼容某些富文本编辑器限制吗？
+
+答：wpspaster和富文本编辑器是各自独立的，理论上支持所有富文本编辑器。wpspaster只是为了获取本地图片。
+
 
 
 #### 联系我们
