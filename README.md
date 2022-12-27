@@ -31,6 +31,7 @@
 ##### 免费版
 
 win启动：wpspaster-v1.1.0-win-free.exe
+
 mac启动：wpspaster-v1.1.0-mac-x64-free.dmg或者wpspaster-v1.1.0-mac-arm64-free.dmg
 
 
