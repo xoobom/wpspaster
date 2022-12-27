@@ -77,4 +77,5 @@
     "Description": "",
   },
   "kite.showWelcomeNotificationOnStartup": false,
+  "liveServer.settings.port": 5501,
 }

@@ -1,0 +1,69 @@
+<!--
+ * @Author: lifuhai
+ * @Date: 2022-12-26 18:05:30
+ * @LastEditTime: 2022-12-26 18:09:28
+ * @LastEditors: lifuhai
+ * @FilePath: /wpspaster-vue2-demo/public/resource/ckeditor/sample/wpspaster-jquery-demo.html
+ * @Description: 
+-->
+<!DOCTYPE html><!--
+	Copyright (c) 2014-2022, CKSource Holding sp. z o.o. All rights reserved.
+	This file is licensed under the terms of the MIT License (see LICENSE.md).
+-->
+
+<html lang="en" dir="ltr">
+	<head>
+		<title>CKEditor 5 wpspaster-jquery-demo</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/png" href="https://c.cksource.com/a/1/logos/ckeditor5.png">
+		<link rel="stylesheet" type="text/css" href="styles.css">
+	</head>
+	<body data-editor="ClassicEditor" data-collaboration="false" data-revision-history="false">
+		<header>
+			<div class="centered">
+				<h1><a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer"><img src="https://c.cksource.com/a/1/logos/ckeditor5.svg" alt="CKEditor 5 logo">CKEditor 5</a></h1>
+				<nav>
+					<ul>
+						<li><a href="https://ckeditor.com/docs/ckeditor5/" target="_blank" rel="noopener noreferrer">Documentation</a></li>
+						<li><a href="https://ckeditor.com/" target="_blank" rel="noopener noreferrer">Website</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<main>
+			<div class="message">
+				<div class="centered">
+					<h2>CKEditor 5 wpspaster-jquery-demo</h2>
+				</div>
+			</div>
+			<div class="centered">
+				<div class="row row-editor">
+					<div class="editor-container">
+						<div class="editor">
+						</div>
+					</div>
+				</div></div>
+			</div>
+		</main>
+		<footer>
+			<p>Copyright © 2022 上海小菠科技有限公司</p>
+		</footer>
+		<script src="../build/ckeditor.js"></script>
+		<script>
+		ClassicEditor
+				.create( document.querySelector( '.editor' ), {
+					licenseKey: '',
+				} )
+				.then( editor => {
+					window.editor = editor;
+				} )
+				.catch( error => {
+					console.error( 'Oops, something went wrong!' );
+					console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+					console.warn( 'Build id: ssvos9rcjx19-pcdnvabgalc8' );
+					console.error( error );
+				} );
+		</script>
+	</body>
+</html>

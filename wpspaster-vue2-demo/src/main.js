@@ -2,8 +2,8 @@
  * @Author: lifuhai fuhai.li@gientech.com
  * @Date: 2022-09-13 21:58:02
  * @LastEditors: lifuhai
- * @LastEditTime: 2022-12-26 15:38:28
- * @FilePath: /wpspaster-vue2-demo/src/main.js
+ * @LastEditTime: 2022-12-26 21:34:00
+ * @FilePath: \wpspaster-vue2-demo\src\main.js
  * @Description: main.js
  */
 import Vue from 'vue';
@@ -25,7 +25,6 @@ Vue.prototype.$dayjs = dayjs; //日期格式化
 
 import VueSocketIO from 'vue-socket.io';
 import SocketIO from 'socket.io-client';
-console.log();
 Vue.use(
   new VueSocketIO({
     debug: process.env.NODE_ENV == 'development' ? true : false, // 生产环境关闭，打开可在控制台查看socket连接和事件监听的信息

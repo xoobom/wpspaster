@@ -1,0 +1,219 @@
+<!--
+ * @Author: lifuhai
+ * @Date: 2022-12-26 22:55:52
+ * @LastEditTime: 2022-12-27 15:07:19
+ * @LastEditors: lifuhai
+ * @FilePath: /wpspaster-jquery-demo/kindeditor/index.html
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.ico" />
+  <title>wpspaster-jquery-kindeditor-demo</title>
+  <link rel="stylesheet" href="./themes/default/default.css" />
+  <link rel="stylesheet" href="./themes/default/styles.css" />
+</head>
+
+<body>
+  <header>
+    <div class="centered">
+      <h1>
+        <a href="http://xoobom.com/" target="_blank" rel="noopener noreferrer"><img src="./img/xoobom-logo.png"
+            alt="CKEditor 5 logo" />XOOBOM小菠科技</a>
+      </h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="http://xoobom.com/wpspaster/" target="_blank" rel="noopener noreferrer">Wpspaster</a>
+          </li>
+          <li>
+            <a href="https://gitee.com/xoobom/wpspaster" target="_blank" rel="noopener noreferrer">Gitee</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="message">
+      <div class="centered">
+        <h2>wpspaster-jquery-kindeditor-demo</h2>
+      </div>
+    </div>
+    <div class="centered">
+      <div class="row row-editor">
+        <div class="editor-container">
+          <textarea id="kindeditor" style="width: 70%; height: 450px"></textarea>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+  <footer>
+    <p>Copyright © 2022 上海小菠科技有限公司</p>
+  </footer>
+  <script charset="utf-8" src="./lib/jquery.min.js"></script>
+  <script charset="utf-8" src="kindeditor-all.js"></script>
+  <script charset="utf-8" src="./lang/zh-CN.js"></script>
+  <script src="./lib/socket.io/socket.io.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./lib/custom-protocol-check.min.js"></script>
+  <script>
+    ////判断是否需要替换图片
+    function replaceImage(originUrl) {
+      if (originUrl.indexOf('file://') > -1) {
+        return true; //本地文件替换
+      } else if (originUrl.indexOf('https://docimg2.docs.qq.com') > -1) {
+        return false; //来自腾讯文档不替换
+      }
+    };
+
+    //判断是mac还是window
+    function getPosType() {
+      var agent = navigator.userAgent.toLowerCase();
+      var isMac = /macintosh|mac os x/i.test(navigator.userAgent);
+      if (agent.indexOf('win32') >= 0 || agent.indexOf('wow32') >= 0) {
+        return 'win';
+      }
+      if (agent.indexOf('win64') >= 0 || agent.indexOf('wow64') >= 0) {
+        return 'win';
+      }
+      if (navigator.userAgent.indexOf('Intel Mac') > 0) {
+        return 'x64Mac'; //'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
+      } else {
+        return 'arm64Mac';
+      }
+    }
+
+    //base64图片转成文件流格式
+    function base64ToFile(data, fileName) {
+      const dataArr = data.split(',');
+      const byteString = atob(dataArr[1]);
+      const options = {
+        type: 'image/jpeg',
+        endings: 'native',
+      };
+      const u8Arr = new Uint8Array(byteString.length);
+      for (let i = 0; i < byteString.length; i++) {
+        u8Arr[i] = byteString.charCodeAt(i);
+      }
+      let formData = new FormData();
+      let fileOfBlob = new File([u8Arr], fileName ? fileName : new Date().getTime() + '.jpg', options); //返回文件流
+      formData.append('file', fileOfBlob);
+      return formData;
+    }
+
+    //反斜杠转斜杠
+    function backslashToSlash(val) {
+      return val.replace(/\\/g, '/');
+    }
+    //协议是否注册。有注册就打开
+    customProtocolCheckFunc = (val) => {
+      window.customProtocolCheck(
+        val,
+        (err) => {
+          window.open('https://gitee.com/xoobom/wpspaster/releases', '_blank');
+        },
+        (res) => { },
+        500,
+      );
+    };
+
+    $(function () {
+      const socket = io("http://localhost:9001", {
+        transports: ['websocket'], //不加这个会跨域
+        autoConnect: true, //是否自动连接
+        reconnection: false, //关闭重连
+      });
+      let newImgUrlListAll = [];
+      socket.on("getImgByLocal", (res1) => {
+        axios.post('http://xoobom.com:8023/file/upload', base64ToFile(res1.data.base64)).then((res2) => {
+          let prefix = ['x64Mac', 'arm64Mac'].includes(getPosType()) ? 'file:/' : 'file://';//kindeditor的话mac是file:/，win是file://
+          newImgUrlListAll.push({
+            originUrl: prefix + res1.data.filePath,//kindeditor是file://
+            url: res2.data.data.fileUrl,
+          });
+        })
+      });
+      socket.on('connect_error', (error) => {
+        customProtocolCheckFunc('wpspaster://');//协议是否注册。有注册就打开
+      });
+
+      var editor = KindEditor.create('#kindeditor', {
+        filterMode: false,
+        pasteType: 2,
+        afterCreate: function () {
+          var self = this;
+          self.edit.doc.body.addEventListener('keydown', function (e) {
+            if (e.keyCode == 86) {
+              setTimeout(() => {
+                const htmlString = self.html();
+                const div = document.createElement('div');
+                div.innerHTML = htmlString;
+                let newImgUrlList = div.getElementsByTagName('img');
+                if (newImgUrlList.length > 0) {
+                  for (let i = 0; i < newImgUrlList.length; ++i) {
+                    if (replaceImage(newImgUrlList[i].src)) {
+                      let filePath = ['x64Mac', 'arm64Mac'].includes(getPosType()) ? newImgUrlList[i].src.slice(6) : newImgUrlList[i].src.slice(8);
+                      socket.emit('getImgByLocal', {
+                        'filePath': filePath,
+                      });
+                    }
+                  }
+                }
+              }, 10);
+            }
+          });
+        }
+      });
+      //Object.create返回一个新对象，新对象的_proto_就是传进去的参数
+      let newProtetype = Object.create(Array.prototype);
+      let methods = ["push", "pop", "shift", "unshift", "reserve", "sort", "splice"];
+      methods.forEach(method => {
+        //新原型上添加同名[method] ，返回原来的Array.prototype[method]
+        newProtetype[method] = function (...args) {
+          let content = editor.html();
+          setTimeout(() => {
+            if (newImgUrlListAll.length > 0) {
+              if (replaceImage(newImgUrlListAll[0].originUrl)) {
+                content = content.replace(
+                  /<img [^>]*src=['"]([^'"]+)[^>]*>/gi,
+                  (mactch, capture) => {
+                    let current = '';
+                    for (let i = 0; i < newImgUrlListAll.length; i++) {
+                      let sourcePath = '';//粘贴原路径
+                      if (getPosType() == 'win') {
+                        sourcePath = backslashToSlash(capture.replace(/(&amp;)/gi, '&'));
+                      } else {
+                        sourcePath = capture.replace(/(&amp;)/gi, '&');
+                      }
+                      if (sourcePath == newImgUrlListAll[i].originUrl) {
+                        current = newImgUrlListAll[i].url;
+                        break;
+                      }
+                    }
+                    current = current ? current : capture;
+                    return mactch.replace(
+                      /src=[\'\"]?([^\'\"]*)[\'\"]?/i,
+                      'src=' + current,
+                    );
+                  },
+                );
+                editor.html(content);
+              }
+            } // 匹配并替换 img中src图片路径
+          }, 10);
+          return Array.prototype[method].call(this, ...args);
+        }
+      })
+      //绑定新的原型
+      newImgUrlListAll.__proto__ = newProtetype;
+    });
+  </script>
+</body>
+
+</html>

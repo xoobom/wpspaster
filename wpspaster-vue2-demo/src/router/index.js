@@ -123,6 +123,12 @@ export const asyncRoutes = [
         name: 'ueditor',
         meta: { title: 'UEditor编辑器' },
       },
+      {
+        path: 'kindeditor',
+        component: () => import('@/views/rich-text-editor/kindeditor/index'),
+        name: 'kindeditor',
+        meta: { title: 'KindEditor编辑器' },
+      },
     ],
   },
   // 404 page must be placed at the end !!!

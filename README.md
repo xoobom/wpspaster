@@ -7,7 +7,7 @@
 图文一键粘贴软件，支持从Word、WPS图文复制后一键粘贴到Tinymce、CKEditor、UEditor等富文本编辑器。支持Chrome、360、Edge、Firefox等现代浏览器。适用Window、Mac
 
 - [在线体验](http://xoobom.com:8020/#/rich-text-editor/tinymce) 
-- [软件下载](https://github.com/xoobom/wpspaster/releases)
+- [软件下载](https://gitee.com/xoobom/wpspaster/releases)
 - [gitee](https://gitee.com/xoobom/wpspaster)
 - [github](https://github.com/xoobom/wpspaster)
 - [官网](http://xoobom.com/wpspaster/)
@@ -28,23 +28,39 @@
 
 #### 使用说明
 
-免费版：
+##### 免费版
 
-```
-本地启wpspaster-vue2-demo项目调试
 win启动：wpspaster-v1.1.0-win-free.exe
 mac启动：wpspaster-v1.1.0-mac-x64-free.dmg或者wpspaster-v1.1.0-mac-arm64-free.dmg
-```
 
-也可以用postman自测：
+
+
+###### vue2
+
+本地启wpspaster-vue2-demo项目调试
+
+
+
+###### jQuery
+
+vscode装插件Live Server，右键index.html页面Open with Live Server启动，端口5500
+
+<div align="center">
+  <img width="100%" src="./img/Open with Live Server.png">
+</div>
+
+
+
+###### postman自测
 
 <div align="center">
   <img width="100%" src="./img/postman.jpeg">
 </div>
 
 
+##### 企业、政府标准版
 
-企业、政府标准版：[详情](http://xoobom.com/wpspaster) 
+[详情](http://xoobom.com/wpspaster) 
 
 
 
