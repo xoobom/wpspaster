@@ -80,7 +80,7 @@ vscode装插件Live Server，右键index.html页面Open with Live Server启动�
 终端输入命令：
 
 ```
-sudo xattr -d com.apple.quarantine /Applications/wpspaster.app
+sudo xattr -d com.apple.quarantine /Applications/Wpspaster.app
 ```
 
 参考[https://blog.csdn.net/wu347771769/article/details/115292816](https://blog.csdn.net/wu347771769/article/details/115292816)
