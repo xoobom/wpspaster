@@ -1,8 +1,8 @@
 <!--
  * @Author: lifuhai
  * @Date: 2022-12-26 18:13:52
- * @LastEditTime: 2022-12-27 09:31:16
- * @LastEditors: lifuhai
+ * @LastEditTime: 2022-12-28 23:58:03
+ * @LastEditors: LiFuHai
  * @FilePath: /wpspaster-vue2-demo/src/views/rich-text-editor/kindeditor/index.vue
  * @Description: KindEditor编辑器
 -->
@@ -16,7 +16,7 @@
 <script>
 import kindeditor from '@/components/kindeditor/index.vue';
 import { fileUpload } from '@/api/file';
-import { getPosType, backslashToSlash, customProtocolCheckFunc, replaceImage, base64ToFile } from '@/utils/index';
+import { getPosType, backslashToSlash, customProtocolCheckFunc, replaceImage, base64ToFile, replaceHttpImgToHttps } from '@/utils/index';
 
 export default {
   components: {
@@ -98,7 +98,7 @@ export default {
             let prefix = ['x64Mac', 'arm64Mac'].includes(getPosType()) ? 'file:/' : 'file://';//kindeditor的话mac是file:/，win是file://
             this.newImgUrlList.push({
               originUrl: prefix + res1.data.filePath,
-              url: res2.data.fileUrl,
+              url: 'http:' == location.protocol ? res2.data.fileUrl : replaceHttpImgToHttps(res2.data.fileUrl),
             });
           });
         } else {

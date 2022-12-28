@@ -1,9 +1,9 @@
 <!--
  * @Author: LiFuHai
  * @Date: 2022-12-11 14:56:51
- * @LastEditTime: 2022-12-25 16:11:07
- * @LastEditors: lifuhai
- * @FilePath: \wpspaster-vue2-demo\src\views\rich-text-editor\ckeditor\index.vue
+ * @LastEditTime: 2022-12-28 23:57:57
+ * @LastEditors: LiFuHai
+ * @FilePath: /wpspaster-vue2-demo/src/views/rich-text-editor/ckeditor/index.vue
  * @Description: 
 -->
 <template>
@@ -16,7 +16,7 @@
 import CKEditor from '@ckeditor/ckeditor5-vue2';
 import ClassicEditor from 'ckeditor5-custom-build';//npm i ./public/resource/ckeditor
 import { fileUpload } from '@/api/file';
-import { getPosType, backslashToSlash, customProtocolCheckFunc, replaceImage, base64ToFile } from '@/utils/index';
+import { getPosType, backslashToSlash, customProtocolCheckFunc, replaceImage, base64ToFile,replaceHttpImgToHttps } from '@/utils/index';
 import MyUploadAdapter from './MyUploadAdapter.js';
 
 export default {
@@ -121,7 +121,7 @@ export default {
           fileUpload(base64ToFile(res1.data.base64)).then((res2) => {
             this.newImgUrlList.push({
               originUrl: 'file:///' + res1.data.filePath,
-              url: res2.data.fileUrl,
+              url: 'http:' == location.protocol ? res2.data.fileUrl : replaceHttpImgToHttps(res2.data.fileUrl),
             });
           });
         } else {

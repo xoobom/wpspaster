@@ -1,9 +1,9 @@
 /*
  * @Author: lifuhai
  * @Date: 2022-10-31 15:53:44
- * @LastEditTime: 2022-12-25 15:07:15
- * @LastEditors: lifuhai
- * @FilePath: \wpspaster-vue2-demo\src\utils\index.js
+ * @LastEditTime: 2022-12-28 23:46:28
+ * @LastEditors: LiFuHai
+ * @FilePath: /wpspaster-vue2-demo/src/utils/index.js
  * @Description:
  */
 import customProtocolCheck from 'custom-protocol-check';
@@ -560,4 +560,9 @@ export const replaceImage = (originUrl) => {
   } else if (originUrl.indexOf('https://docimg2.docs.qq.com') > -1) {
     return false; //来自腾讯文档不替换
   }
+};
+
+//http图片换成https
+export const replaceHttpImgToHttps = (httpImg) => {
+  return 'https://xoobom.com:8024' + httpImg.slice(27);
 };

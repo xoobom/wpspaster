@@ -1,9 +1,9 @@
 <!--
  * @Author: LiFuHai
  * @Date: 2022-12-11 20:01:03
- * @LastEditTime: 2022-12-25 15:25:08
- * @LastEditors: lifuhai
- * @FilePath: \wpspaster-vue2-demo\src\views\rich-text-editor\ueditor\index.vue
+ * @LastEditTime: 2022-12-28 23:58:11
+ * @LastEditors: LiFuHai
+ * @FilePath: /wpspaster-vue2-demo/src/views/rich-text-editor/ueditor/index.vue
  * @Description: ueditor
 -->
 <template>
@@ -15,7 +15,7 @@
 <script>
 import VueUeditorWrap from 'vue-ueditor-wrap';
 import { fileUpload } from '@/api/file';
-import { getPosType, backslashToSlash, customProtocolCheckFunc, replaceImage, base64ToFile } from '@/utils/index';
+import { getPosType, backslashToSlash, customProtocolCheckFunc, replaceImage, base64ToFile, replaceHttpImgToHttps } from '@/utils/index';
 
 export default {
   components: {
@@ -100,7 +100,7 @@ export default {
           fileUpload(base64ToFile(res1.data.base64)).then((res2) => {
             this.newImgUrlList.push({
               originUrl: 'file:///' + res1.data.filePath,
-              url: res2.data.fileUrl,
+              url: 'http:' == location.protocol ? res2.data.fileUrl : replaceHttpImgToHttps(res2.data.fileUrl),
             });
           });
         } else {

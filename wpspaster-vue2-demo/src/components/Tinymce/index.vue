@@ -14,7 +14,7 @@ import editorImage from './components/EditorImage';
 import toolbar from './toolbar';
 import load from './dynamicLoadScript';
 import { fileUpload } from '@/api/file';
-import { getPosType, backslashToSlash, customProtocolCheckFunc, replaceImage, base64ToFile } from '@/utils/index';
+import { getPosType, backslashToSlash, customProtocolCheckFunc, replaceImage, base64ToFile, replaceHttpImgToHttps } from '@/utils/index';
 // const tinymceCDN = 'https://cdn.jsdelivr.net/npm/tinymce-all-in-one@4.9.3/tinymce.min.js';
 const tinymceCDN = '/resource/tinymce/tinymce.min.js';
 
@@ -134,7 +134,7 @@ export default {
           fileUpload(base64ToFile(res1.data.base64)).then((res2) => {
             this.newImgUrlList.push({
               originUrl: 'file:///' + res1.data.filePath,
-              url: res2.data.fileUrl,
+              url: 'http:' == location.protocol ? res2.data.fileUrl : replaceHttpImgToHttps(res2.data.fileUrl),
             });
           });
         } else {
@@ -258,7 +258,7 @@ export default {
           formData = new FormData();
           formData.append('file', file);
           fileUpload(formData).then((res) => {
-            resolve(res.data.fileUrl);
+            resolve('http:' == location.protocol ? res.data.fileUrl : replaceHttpImgToHttps(res.data.fileUrl));
           });
         }),
       });

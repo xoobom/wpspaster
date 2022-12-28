@@ -1,8 +1,8 @@
 <!--
  * @Author: lifuhai
  * @Date: 2022-12-26 22:55:52
- * @LastEditTime: 2022-12-27 15:07:19
- * @LastEditors: lifuhai
+ * @LastEditTime: 2022-12-29 00:08:46
+ * @LastEditors: LiFuHai
  * @FilePath: /wpspaster-jquery-demo/kindeditor/index.html
  * @Description: 
 -->
@@ -111,6 +111,7 @@
     function backslashToSlash(val) {
       return val.replace(/\\/g, '/');
     }
+
     //协议是否注册。有注册就打开
     customProtocolCheckFunc = (val) => {
       window.customProtocolCheck(
@@ -122,6 +123,12 @@
         500,
       );
     };
+
+    //http图片换成https
+    replaceHttpImgToHttps = (httpImg) => {
+      return 'https://xoobom.com:8024' + httpImg.slice(27);
+    };
+
 
     $(function () {
       const socket = io("http://localhost:9001", {
@@ -135,7 +142,7 @@
           let prefix = ['x64Mac', 'arm64Mac'].includes(getPosType()) ? 'file:/' : 'file://';//kindeditor的话mac是file:/，win是file://
           newImgUrlListAll.push({
             originUrl: prefix + res1.data.filePath,//kindeditor是file://
-            url: res2.data.data.fileUrl,
+            url: 'http:' == location.protocol ? res2.data.data.fileUrl : replaceHttpImgToHttps(res2.data.data.fileUrl),
           });
         })
       });
