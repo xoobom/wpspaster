@@ -243,7 +243,7 @@ export default {
                   current = current ? current : capture;
                   return mactch.replace(
                     /src=[\'\"]?([^\'\"]*)[\'\"]?/i,
-                    'src=' + current,
+                    `src="${current}"`,
                   );
                 },
               );

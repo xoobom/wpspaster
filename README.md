@@ -26,6 +26,16 @@
 
 
 
+#### 目录说明
+
+```
+ueditor：百度编辑器源码，基于https://github.com/fex-team/ueditor做了小改动。改动点：图片src: attrs.src
+wpspaster-jquery-demo：wpspaster集成到项目的demo，jquery版
+wpspaster-vue2-demo：wpspaster集成到项目的demo，vue版
+```
+
+
+
 #### 使用说明
 
 ##### 免费版

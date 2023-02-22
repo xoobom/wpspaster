@@ -1,9 +1,9 @@
 <!--
  * @Author: lifuhai
  * @Date: 2022-12-26 22:55:52
- * @LastEditTime: 2022-12-29 00:08:46
- * @LastEditors: LiFuHai
- * @FilePath: /wpspaster-jquery-demo/kindeditor/index.html
+ * @LastEditTime: 2023-02-22 15:53:46
+ * @LastEditors: lifuhai
+ * @FilePath: /wpspaster/wpspaster-jquery-demo/kindeditor/index.html
  * @Description: 
 -->
 <!DOCTYPE html>
@@ -54,7 +54,7 @@
     </div>
   </main>
   <footer>
-    <p>Copyright © 2022 上海小菠科技有限公司</p>
+    <p>Copyright © 2023 上海小菠科技有限公司</p>
   </footer>
   <script charset="utf-8" src="./lib/jquery.min.js"></script>
   <script charset="utf-8" src="kindeditor-all.js"></script>
@@ -206,7 +206,7 @@
                     current = current ? current : capture;
                     return mactch.replace(
                       /src=[\'\"]?([^\'\"]*)[\'\"]?/i,
-                      'src=' + current,
+                      `src="${current}"`,
                     );
                   },
                 );

@@ -1,9 +1,9 @@
 <!--
  * @Author: LiFuHai
  * @Date: 2022-12-11 14:56:51
- * @LastEditTime: 2022-12-28 23:57:57
- * @LastEditors: LiFuHai
- * @FilePath: /wpspaster-vue2-demo/src/views/rich-text-editor/ckeditor/index.vue
+ * @LastEditTime: 2023-02-22 15:53:33
+ * @LastEditors: lifuhai
+ * @FilePath: /wpspaster/wpspaster-vue2-demo/src/views/rich-text-editor/ckeditor/index.vue
  * @Description: 
 -->
 <template>
@@ -81,7 +81,7 @@ export default {
                   current = current ? current : capture;
                   return mactch.replace(
                     /src=[\'\"]?([^\'\"]*)[\'\"]?/i,
-                    'src=' + current,
+                    `src="${current}"`,
                   );
                 },
               );

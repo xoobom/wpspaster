@@ -1,9 +1,9 @@
 <!--
  * @Author: lifuhai
  * @Date: 2022-12-26 18:13:52
- * @LastEditTime: 2022-12-28 23:58:03
- * @LastEditors: LiFuHai
- * @FilePath: /wpspaster-vue2-demo/src/views/rich-text-editor/kindeditor/index.vue
+ * @LastEditTime: 2023-02-22 15:53:29
+ * @LastEditors: lifuhai
+ * @FilePath: /wpspaster/wpspaster-vue2-demo/src/views/rich-text-editor/kindeditor/index.vue
  * @Description: KindEditor编辑器
 -->
 <template>
@@ -57,7 +57,7 @@ export default {
                   current = current ? current : capture;
                   return mactch.replace(
                     /src=[\'\"]?([^\'\"]*)[\'\"]?/i,
-                    'src=' + current,
+                    `src="${current}"`,
                   );
                 },
               );
