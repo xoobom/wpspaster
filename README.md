@@ -1,60 +1,66 @@
 <div align="center">
   <img width="130" height="130" src="./img/wpspaster-logo-circle.png">
 </div>
+[简体中文](/README.zh-cn.md) | English
 
-#### 简介
+One-click pasting software for picture and text, supports copying picture and text from Word and WPS and then pasting them into rich text editors such as Tinymce, CKEditor, UEditor, KindEditor, etc. with one click. Supports modern browsers such as Chrome, 360, Edge, Firefox, etc. Applicable to Windows and Mac
 
-图文一键粘贴软件，支持从Word、WPS图文复制后一键粘贴到Tinymce、CKEditor、UEditor、KindEditor等富文本编辑器。支持Chrome、360、Edge、Firefox等现代浏览器。适用Window、Mac
-
-- [在线体验](http://xoobom.com:8020/#/rich-text-editor/tinymce) 
-- [软件下载](https://gitee.com/xoobom/wpspaster/releases)
+- [Online Demo](http://xoobom.com:8020/#/rich-text-editor/tinymce) 
+- [Download](https://github.com/xoobom/wpspaster/releases)
 - [gitee](https://gitee.com/xoobom/wpspaster)
 - [github](https://github.com/xoobom/wpspaster)
-- [官网](http://xoobom.com/wpspaster/)
 
 <div>
   <img width="100%" src="./img/view.gif">
 </div>
 
-#### 核心逻辑
+# Core Logic
 
-1、启动Wpspaster软件，图文粘贴时获取本地file:///C:/Users/Gientech/AppData/Local/Temp/ksohtml32008/wps7.png图片转base64返回给浏览器
+1、Start the Wpspaster software, and when pasting images and texts, obtain the local file:///C:/Users/Gientech/AppData/Local/Temp/ksohtml32008/wps7.png image and convert it to base64 and return it to the browser
 
-2、浏览器中富文本编辑器拿到base64转file上传图片到服务器上，服务器返回图片url
+2、The rich text editor in the browser gets the base64 to file and uploads the image to the server, and the server returns the image URL.
 
-3、图片url替换
+3、Image url replacement
 
 
 
-#### 目录说明
+# Catalog description
 
 ```
-ueditor：百度编辑器源码，基于https://github.com/fex-team/ueditor做了小改动。改动点：图片src: attrs.src
-wpspaster-jquery-demo：wpspaster集成到项目的demo，jquery版
-wpspaster-vue2-demo：wpspaster集成到项目的demo，vue版
+├── example                    # example
+│   │── wpspaster-backend      # Image upload interface, can be replaced with Java
+│   │── wpspaster-jquery-demo  # jQuery project demo
+│   └── wpspaster-vue2-demo    # Vue project demo
+├── ueditor              # Ueditor code, changes: picture src: attrs.src
 ```
 
 
 
-#### 使用说明
+# Instructions for use
 
-##### 免费版
+## Wpspaster run
 
-win启动：wpspaster-v1.1.0-win-free.exe
+win：wpspaster-v2.0.0.exe
 
-mac启动：wpspaster-v1.1.0-mac-x64-free.dmg或者wpspaster-v1.1.0-mac-arm64-free.dmg
-
-
-
-###### vue2
-
-本地启wpspaster-vue2-demo项目调试
+mac：wpspaster-v2.0.0.dmg
 
 
 
-###### jQuery
+## Image upload interface run
 
-vscode装插件Live Server，右键index.html页面Open with Live Server启动，端口5500
+Start the wpspaster-backend project locally
+
+
+
+## Vue2 project run
+
+Start the wpspaster-vue2-demo project locally
+
+
+
+## jQuery project run
+
+Install the plug-in Live Server in vscode, right-click the index.html page Open with Live Server to start, port 5500
 
 <div align="center">
   <img width="100%" src="./img/Open with Live Server.png">
@@ -62,52 +68,71 @@ vscode装插件Live Server，右键index.html页面Open with Live Server启动�
 
 
 
-###### postman自测
+## Postman self-test
 
 <div align="center">
   <img width="100%" src="./img/postman.jpeg">
 </div>
 
 
-##### 企业、政府标准版
+# Common problem
 
-[详情](http://xoobom.com/wpspaster) 
-
-
-
-#### 常见问题
-
-##### 1、mac安装后打开提示已损坏？
+## After opening on mac, it says it is damaged?
 
 <div>
   <img width="250" src="./img/已损坏提示.jpeg">
 </div>
 
-解决：
+solve:
 
-系统的“隐私与安全性”中允许“任何来源”
+Allow "Any Source" in the system's "Privacy & Security"
 
-终端输入命令：
+Enter the command in the terminal:
 
 ```
 sudo xattr -d com.apple.quarantine /Applications/Wpspaster.app
 ```
 
-参考[https://blog.csdn.net/wu347771769/article/details/115292816](https://blog.csdn.net/wu347771769/article/details/115292816)
+refer to[https://blog.csdn.net/wu347771769/article/details/115292816](https://blog.csdn.net/wu347771769/article/details/115292816)
 
-##### 2、wpspaster有兼容某些富文本编辑器限制吗？
+## Is wpspaster compatible with certain rich text editor limitations?
 
-答：wpspaster和富文本编辑器是各自独立的，理论上支持所有富文本编辑器。wpspaster只是为了获取本地图片。
+answer：wpspaster and the rich text editor are independent and theoretically support all rich text editors. wpspaster is just for getting local images.
 
 
 
-#### 联系我们
+# Discussion
 
-wpspaster用户交流QQ群：278919640
+## QQ group
 
-QQ：3194249968
+Group number：278919640      
 
 <div>
   <img width="250" src="./img/QQ群.jpeg?t=2022-11-28">
+</div>
+## Author QQ
+
+QQ number：3194249968
+
+<div>
   <img width="250" src="./img/QQ.jpg">
 </div>
+
+# Contribution
+Wpspaster is open to the outside world, whether it is just modifying the punctuation marks of the document or major reconstruction of the overall function of wpspaster, we welcome it. We will carefully review, respond to, and merge every PR you submit.
+<a href="https://github.com/vuejs/vue/graphs/contributors"><img src="./img/Contribution.jpg" /></a>
+
+
+# Donate
+
+If you think this project has helped you, you can donate a cup of coffee to express your encouragement. :moneybag: :coffee:
+<div>
+  <img width="250" src="./img/alipay.jpg">
+  <img width="250" src="./img/wechatpay.jpg">
+</div>
+
+# License
+
+[MIT](https://opensource.org/licenses/MIT)
+
+Copyright (c) 2022-present, Li Fuhai

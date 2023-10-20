@@ -1,0 +1,11 @@
+{
+    "apps": {
+        "name": "wpspaster-backend",
+        "cwd": "/data/xoobom/wpspaster/wpspaster-backend",
+        "script": "npm run dev",
+        "error_file": "./pm2/log/err.log",
+        "out_file": "./pm2/log/out.log",
+        "pid_file": "./pm2/app.pid",
+        "watch": false
+    }
+}
