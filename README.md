@@ -1,6 +1,7 @@
 <div align="center">
   <img width="130" height="130" src="./img/wpspaster-logo-circle.png">
 </div>
+
 [简体中文](/README.zh-cn.md) | English
 
 One-click pasting software for picture and text, supports copying picture and text from Word and WPS and then pasting them into rich text editors such as Tinymce, CKEditor, UEditor, KindEditor, etc. with one click. Supports modern browsers such as Chrome, 360, Edge, Firefox, etc. Applicable to Windows and Mac
@@ -120,7 +121,10 @@ QQ number：3194249968
 
 # Contribution
 Wpspaster is open to the outside world, whether it is just modifying the punctuation marks of the document or major reconstruction of the overall function of wpspaster, we welcome it. We will carefully review, respond to, and merge every PR you submit.
+<div>
 <a href="https://github.com/vuejs/vue/graphs/contributors"><img src="./img/Contribution.jpg" /></a>
+</div>
+
 
 
 # Donate

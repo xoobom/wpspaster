@@ -1,6 +1,7 @@
 <div align="center">
   <img width="130" height="130" src="./img/wpspaster-logo-circle.png">
 </div>
+
 简体中文 | [English](/README.md)
 
 图文一键粘贴软件，支持从Word、WPS图文复制后一键粘贴到Tinymce、CKEditor、UEditor、KindEditor等富文本编辑器。支持Chrome、360、Edge、Firefox等现代浏览器。适用Window、Mac
@@ -123,9 +124,9 @@ QQ号：3194249968
 # 贡献代码
 
 wpspaster对外持开放态度，不论是只修改文档的标点符号还是对wpspaster的整体功能有大的重构我们都欢迎。对于您的每一个PR我们都会认真查看、回复、合并。
-
+<div>
 <a href="https://github.com/vuejs/vue/graphs/contributors"><img src="./img/Contribution.jpg" /></a>
-
+</div>
 
 
 # 捐赠
