@@ -7,7 +7,7 @@
   },
   "publish": null,
   "npmRebuild": false,
-  "compression": "store",
+  "compression": "maximum",
   "afterSign": "build/notarize.js",
   "protocols": [
     {
