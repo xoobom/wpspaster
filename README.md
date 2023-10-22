@@ -12,7 +12,7 @@ One-click pasting software for picture and text, supports copying picture and te
 - [github](https://github.com/xoobom/wpspaster)
 
 <div>
-  <img width="100%" src="./img/view.gif">
+  <video  src="./img/mac图文粘贴演示.mp4">
 </div>
 
 # Core Logic
