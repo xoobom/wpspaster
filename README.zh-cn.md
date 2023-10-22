@@ -12,9 +12,8 @@
 - [github](https://github.com/xoobom/wpspaster)
 
 <div>
-  <video  src="./img/mac图文粘贴演示.mp4">
+  <img width="100%" src="./img/view.gif">
 </div>
-
 
 # 核心逻辑
 
