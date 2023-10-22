@@ -15349,14 +15349,6 @@ UE.plugins["pagebreak"] = function() {
 
 
 // plugins/wordimage.js
-/*
- * @Author: LiFuHai
- * @Date: 2022-12-11 19:54:02
- * @LastEditTime: 2022-12-11 21:08:42
- * @LastEditors: LiFuHai
- * @FilePath: /xb-ueditor/_src/plugins/wordimage.js
- * @Description: 
- */
 ///import core
 ///commands 本地图片引导上传
 ///commandsName  WordImage

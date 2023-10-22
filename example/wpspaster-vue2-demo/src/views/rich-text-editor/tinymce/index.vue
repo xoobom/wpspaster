@@ -1,7 +1,7 @@
 <template>
   <div class="app-container" style="min-height:400px">
     <div>
-      <tinymce v-model="tinymceContent" :height="500" />
+      <tinymce v-model="tinymceContent" :height="600" />
     </div>
   </div>
 </template>

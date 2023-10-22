@@ -1,11 +1,3 @@
-<!--
- * @Author: lifuhai
- * @Date: 2022-12-26 21:22:35
- * @LastEditTime: 2023-10-20 00:22:39
- * @LastEditors: lifuhai
- * @Description: 
- * @FilePath: \wpspaster-vue2-demo\src\layout\components\Sidebar\Logo.vue
--->
 <template>
   <div class="sidebar-logo-container" :class="{'collapse':collapse}">
     <transition name="sidebarLogoFade">
