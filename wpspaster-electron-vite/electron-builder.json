@@ -1,0 +1,47 @@
+{
+  "appId": "com.electron.app",
+  "productName": "Wpspaster",
+  "copyright": "XOOBOM",
+  "directories": {
+    "output": "dist/electron"
+  },
+  "publish": null,
+  "npmRebuild": false,
+  "compression": "store",
+  "afterSign": "build/notarize.js",
+  "protocols": [
+    {
+      "name": "wpspaster",
+      "schemes": [
+        "wpspaster"
+      ]
+    }
+  ],
+  "nsis": {
+    "include": "installer.nsh",
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true
+  },
+  "win": {
+    "icon": "src/renderer/src/assets/wpspaster-logo-circle.png",
+    "artifactName": "wpspaster-v${version}.${ext}"
+  },
+  "mac": {
+    "icon": "src/renderer/src/assets/wpspaster-logo-circle.png",
+    "hardenedRuntime": true,
+    "gatekeeperAssess": false,
+    "entitlements": "build/entitlements.mac.plist",
+    "entitlementsInherit": "build/entitlements.mac.plist",
+    "artifactName": "wpspaster-v${version}.${ext}"
+  },
+  "dmg": {
+    "sign": false
+  },
+  "files": [
+    "!**/.vscode/*",
+    "!src/*",
+    "!{.editorconfig,.eslintignore,.eslintrc.cjs,.gitignore,.prettierignore,.prettierrc.yaml,CHANGELOG.md,electron-builder.json,electron.vite.config.ts,installer.nsh,package-lock.json,README.md,tsconfig.json}"
+  ]
+}
