@@ -111,6 +111,7 @@ sudo xattr -d com.apple.quarantine /Applications/Wpspaster.app
 <div>
   <img width="250" src="./img/QQ群.jpeg?t=2022-11-28">
 </div>
+
 ## 作者QQ
 
 QQ号：3194249968
