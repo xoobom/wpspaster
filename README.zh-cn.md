@@ -33,6 +33,7 @@
 │   │── wpspaster-jquery-demo  # jquery项目demo
 │   └── wpspaster-vue2-demo    # vue项目demo
 ├── ueditor                    # 百度编辑器源码，改动点：图片src: attrs.src
+├── wpspaster-electron-vite    # wpspaster源码
 ```
 
 

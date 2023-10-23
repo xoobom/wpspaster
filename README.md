@@ -32,7 +32,8 @@ One-click pasting software for picture and text, supports copying picture and te
 │   │── wpspaster-backend      # Image upload interface, can be replaced with Java
 │   │── wpspaster-jquery-demo  # jQuery project demo
 │   └── wpspaster-vue2-demo    # Vue project demo
-├── ueditor              # Ueditor code, changes: picture src: attrs.src
+├── ueditor                    # Ueditor code, changes: picture src: attrs.src
+├── wpspaster-electron-vite    # wpspaster source code
 ```
 
 
