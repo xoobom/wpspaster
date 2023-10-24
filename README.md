@@ -83,7 +83,7 @@ Install the plug-in Live Server in vscode, right-click the index.html page Open 
 </div>
 
 
-# Common problem
+# FAQ
 
 ## After opening on mac, it says it is damaged?
 
@@ -104,7 +104,7 @@ xattr -cr /Applications/Wpspaster.app
 
 ## Others
 
-https://h1o5fjihr4.feishu.cn/wiki/WQjfwaubgi3N50kjO6ecpCtOn1g?from=from_copylink
+https://h1o5fjihr4.feishu.cn/wiki/IoX8wN23fiRUoLkF5z0cceuenab?from=from_copylink
 
 
 
