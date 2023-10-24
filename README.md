@@ -99,13 +99,12 @@ Enter the command in the terminal:
 
 ```
 sudo xattr -d com.apple.quarantine /Applications/Wpspaster.app
+xattr -cr /Applications/Wpspaster.app
 ```
 
-refer to[https://blog.csdn.net/wu347771769/article/details/115292816](https://blog.csdn.net/wu347771769/article/details/115292816)
+## Others
 
-## Is wpspaster compatible with certain rich text editor limitations?
-
-answer：wpspaster and the rich text editor are independent and theoretically support all rich text editors. wpspaster is just for getting local images.
+https://h1o5fjihr4.feishu.cn/wiki/WQjfwaubgi3N50kjO6ecpCtOn1g?from=from_copylink
 
 
 

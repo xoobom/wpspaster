@@ -99,13 +99,12 @@ vscode装插件Live Server，右键index.html页面Open with Live Server启动�
 
 ```
 sudo xattr -d com.apple.quarantine /Applications/Wpspaster.app
+xattr -cr /Applications/Wpspaster.app
 ```
 
-参考[https://blog.csdn.net/wu347771769/article/details/115292816](https://blog.csdn.net/wu347771769/article/details/115292816)
+## 其他问题
 
-## wpspaster有兼容某些富文本编辑器限制吗？
-
-答：wpspaster和富文本编辑器是各自独立的，理论上支持所有富文本编辑器。wpspaster只是为了获取本地图片。
+https://h1o5fjihr4.feishu.cn/wiki/WQjfwaubgi3N50kjO6ecpCtOn1g?from=from_copylink
 
 
 
