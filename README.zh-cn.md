@@ -40,6 +40,12 @@
 
 # 使用说明
 
+## 视频演示
+
+【wpspaster工程运行演示-哔哩哔哩】 https://b23.tv/0eJoIxh
+
+
+
 ## Wpspaster启动
 
 win启动：wpspaster-v2.0.0.exe

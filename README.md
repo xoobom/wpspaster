@@ -40,6 +40,12 @@ One-click pasting software for picture and text, supports copying picture and te
 
 # Instructions for use
 
+## Video Demo
+
+https://b23.tv/0eJoIxh
+
+
+
 ## Wpspaster run
 
 win：wpspaster-v2.0.0.exe
