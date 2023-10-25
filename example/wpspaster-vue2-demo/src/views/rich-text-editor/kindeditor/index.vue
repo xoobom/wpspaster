@@ -33,6 +33,7 @@ export default {
           if (this.newImgUrlList.length > 0 && this.newImgUrlList.length == this.newImgUrlListLength) {
             if (replaceImage(this.newImgUrlList[0].originUrl)) {
               content = content.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, (mactch, capture) => {
+                capture = ['x64Mac', 'arm64Mac'].includes(getPosType()) ? 'file:///' + capture.slice(7) : capture;
                 let current = '';
                 for (let i = 0; i < this.newImgUrlList.length; i++) {
                   let sourcePath = ''; //粘贴原路径
@@ -41,7 +42,7 @@ export default {
                   } else {
                     sourcePath = capture.replace(/(&amp;)/gi, '&');
                   }
-                  if (sourcePath == this.newImgUrlList[i].originUrl) {
+                  if (sourcePath.toLocaleLowerCase() == this.newImgUrlList[i].originUrl.toLocaleLowerCase()) {
                     current = this.newImgUrlList[i].url;
                     break;
                   }
@@ -83,7 +84,7 @@ export default {
       this.sockets.subscribe('getImgByLocal', (res1) => {
         if (res1.status == 200) {
           fileUpload(base64ToFile(res1.data.base64)).then((res2) => {
-            let prefix = ['x64Mac', 'arm64Mac'].includes(getPosType()) ? 'file:/' : 'file://'; //kindeditor的话mac是file:/，win是file://
+            let prefix = ['x64Mac', 'arm64Mac'].includes(getPosType()) ? 'file://' : 'file://'; //kindeditor的话mac是file://，win是file://
             this.newImgUrlList.push({
               originUrl: prefix + res1.data.filePath,
               url: 'http:' == location.protocol ? res2.data.fileUrl : replaceHttpImgToHttps(res2.data.fileUrl),
