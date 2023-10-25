@@ -9,6 +9,34 @@
   <title>wpspaster-jquery-kindeditor-demo</title>
   <link rel="stylesheet" href="./themes/default/default.css" />
   <link rel="stylesheet" href="./themes/default/styles.css" />
+  <style>
+    .center {
+      text-align: center;
+      justify-content: center;
+      display: flex;
+    }
+
+    .mt10 {
+      margin-top: 10px;
+    }
+
+    .mb10 {
+      margin-bottom: 10px;
+    }
+
+    .ml10 {
+      margin-left: 10px;
+    }
+
+    .mr10 {
+      margin-right: 10px;
+    }
+
+    .link {
+      color: #1a9aef;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
@@ -41,6 +69,10 @@
         <div class="editor-container">
           <textarea id="kindeditor" style="width: 70%; height: 450px"></textarea>
         </div>
+      </div>
+      <div class="mt10 center">
+        <span class="tip">注：若要使用图文粘贴，请确保wpspaster启动。 </span>
+        <span class="wpspasterDownload link">下载</span>
       </div>
     </div>
     </div>
@@ -116,6 +148,10 @@
       );
     };
 
+    $(".wpspasterDownload").click(function () {
+      window.open('https://gitee.com/xoobom/wpspaster/releases');
+    })
+
     //http图片换成https
     replaceHttpImgToHttps = (httpImg) => {
       return 'https://xoobom.com:8024' + httpImg.slice(27);
@@ -132,7 +168,7 @@
       socket.on("getImgByLocal", (res1) => {
         if (res1.status == 200) {
           axios.post('http://xoobom.com:8023/file/upload', base64ToFile(res1.data.base64)).then((res2) => {
-            let prefix = ['x64Mac', 'arm64Mac'].includes(getPosType()) ? 'file:/' : 'file://';//kindeditor的话mac是file:/，win是file://
+            let prefix = ['x64Mac', 'arm64Mac'].includes(getPosType()) ? 'file://' : 'file://';//kindeditor的话mac是file:/，win是file://
             newImgUrlListAll.push({
               originUrl: prefix + res1.data.filePath,//kindeditor是file://
               url: 'http:' == location.protocol ? res2.data.data.fileUrl : replaceHttpImgToHttps(res2.data.data.fileUrl),
@@ -186,6 +222,7 @@
                 content = content.replace(
                   /<img [^>]*src=['"]([^'"]+)[^>]*>/gi,
                   (mactch, capture) => {
+                    capture = ['x64Mac', 'arm64Mac'].includes(getPosType()) ? 'file:///' + capture.slice(7) : capture;
                     let current = '';
                     for (let i = 0; i < newImgUrlListAll.length; i++) {
                       let sourcePath = '';//粘贴原路径
@@ -194,8 +231,8 @@
                       } else {
                         sourcePath = capture.replace(/(&amp;)/gi, '&');
                       }
-                      if (sourcePath == newImgUrlListAll[i].originUrl) {
-                        current = newImgUrlListAll[i].url;
+                      if (sourcePath.toLocaleLowerCase() == newImgUrlListAll[i].originUrl.toLocaleLowerCase()) {
+                        current = 'http://xoobom.com:8020'+newImgUrlListAll[i].url;
                         break;
                       }
                     }

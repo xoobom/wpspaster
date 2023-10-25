@@ -9,6 +9,34 @@
   <link rel="icon" href="favicon.ico" />
   <title>wpspaster-jquery-ueditor-demo</title>
   <link rel="stylesheet" href="./themes/default/styles.css" />
+  <style>
+    .center {
+      text-align: center;
+      justify-content: center;
+      display: flex;
+    }
+
+    .mt10 {
+      margin-top: 10px;
+    }
+
+    .mb10 {
+      margin-bottom: 10px;
+    }
+
+    .ml10 {
+      margin-left: 10px;
+    }
+
+    .mr10 {
+      margin-right: 10px;
+    }
+
+    .link {
+      color: #1a9aef;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
@@ -41,6 +69,10 @@
         <div class="editor-container">
           <script id="ueditor" type="text/plain" style="width: 800px; height: 350px"></script>
         </div>
+      </div>
+      <div class="mt10 center">
+        <span class="tip">注：若要使用图文粘贴，请确保wpspaster启动。 </span>
+        <span class="wpspasterDownload link">下载</span>
       </div>
     </div>
     </div>
@@ -118,6 +150,10 @@
       );
     };
 
+    $(".wpspasterDownload").click(function () {
+      window.open('https://gitee.com/xoobom/wpspaster/releases');
+    })
+
     //http图片换成https
     replaceHttpImgToHttps = (httpImg) => {
       return 'https://xoobom.com:8024' + httpImg.slice(27);
@@ -135,7 +171,6 @@
         });
         let newImgUrlListAll = [];
         socket.on("getImgByLocal", (res1) => {
-          console.log(res1);
           if (res1.status == 200) {
             axios.post('http://xoobom.com:8023/file/upload', base64ToFile(res1.data.base64)).then((res2) => {
               let prefix = ['x64Mac', 'arm64Mac'].includes(getPosType()) ? 'file:///' : 'file://';//ueditor的话mac是file:/，win是file://
@@ -150,7 +185,7 @@
         });
 
         socket.on('connect_error', (error) => {
-          customProtocolCheckFunc('wpspaster://');//协议是否注册。有注册就打开
+          // customProtocolCheckFunc('wpspaster://');//协议是否注册。有注册就打开
         });
 
         ue.addListener('catchRemoteImage', async () => {
