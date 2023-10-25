@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
-    <kindeditor id="kindeditor" ref="kindeditor" height="450px" width="100%" :content="editorText" :filterMode="false" @on-content-change="onContentChange">
-    </kindeditor>
+    <kindeditor id="kindeditor" ref="kindeditor" height="450px" width="100%" :content="editorText" :filterMode="false" @on-content-change="onContentChange"> </kindeditor>
+    <wpspasterTip></wpspasterTip>
   </div>
 </template>
 
@@ -9,17 +9,19 @@
 import kindeditor from '@/components/kindeditor/index.vue';
 import { fileUpload } from '@/api/file';
 import { getPosType, backslashToSlash, customProtocolCheckFunc, replaceImage, base64ToFile, replaceHttpImgToHttps } from '@/utils/index';
+import wpspasterTip from '@/components/wpspaster-tip/index.vue';
 
 export default {
   components: {
     kindeditor,
+    wpspasterTip,
   },
   data() {
     return {
       editorText: '',
-      newImgUrlList: [],//图片数组
+      newImgUrlList: [], //图片数组
       myEditor: null,
-      newImgUrlListLength: 0,//记录图片有多少张
+      newImgUrlListLength: 0, //记录图片有多少张
     };
   },
   watch: {
@@ -28,31 +30,25 @@ export default {
         if (this.myEditor && this.newImgUrlList.length > 0) {
           let content = this.editorText;
           //this.newImgUrlList.length == this.newImgUrlListLength解决可能上传多次问题
-          if (this.newImgUrlList.length > 0 && (this.newImgUrlList.length == this.newImgUrlListLength)) {
+          if (this.newImgUrlList.length > 0 && this.newImgUrlList.length == this.newImgUrlListLength) {
             if (replaceImage(this.newImgUrlList[0].originUrl)) {
-              content = content.replace(
-                /<img [^>]*src=['"]([^'"]+)[^>]*>/gi,
-                (mactch, capture) => {
-                  let current = '';
-                  for (let i = 0; i < this.newImgUrlList.length; i++) {
-                    let sourcePath = '';//粘贴原路径
-                    if (getPosType() == 'win') {
-                      sourcePath = backslashToSlash(capture.replace(/(&amp;)/gi, '&'));
-                    } else {
-                      sourcePath = capture.replace(/(&amp;)/gi, '&');
-                    }
-                    if (sourcePath == this.newImgUrlList[i].originUrl) {
-                      current = this.newImgUrlList[i].url;
-                      break;
-                    }
+              content = content.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, (mactch, capture) => {
+                let current = '';
+                for (let i = 0; i < this.newImgUrlList.length; i++) {
+                  let sourcePath = ''; //粘贴原路径
+                  if (getPosType() == 'win') {
+                    sourcePath = backslashToSlash(capture.replace(/(&amp;)/gi, '&'));
+                  } else {
+                    sourcePath = capture.replace(/(&amp;)/gi, '&');
                   }
-                  current = current ? current : capture;
-                  return mactch.replace(
-                    /src=[\'\"]?([^\'\"]*)[\'\"]?/i,
-                    `src="${current}"`,
-                  );
-                },
-              );
+                  if (sourcePath == this.newImgUrlList[i].originUrl) {
+                    current = this.newImgUrlList[i].url;
+                    break;
+                  }
+                }
+                current = current ? current : capture;
+                return mactch.replace(/src=[\'\"]?([^\'\"]*)[\'\"]?/i, `src="${current}"`);
+              });
               this.editorText = content;
             }
           } // 匹配并替换 img中src图片路径
@@ -69,7 +65,7 @@ export default {
   sockets: {
     //连接错误
     connect_error() {
-      customProtocolCheckFunc('wpspaster://');//协议是否注册。有注册就打开
+      // customProtocolCheckFunc('wpspaster://'); //协议是否注册。有注册就打开
     },
   },
   beforeDestroy() {
@@ -87,7 +83,7 @@ export default {
       this.sockets.subscribe('getImgByLocal', (res1) => {
         if (res1.status == 200) {
           fileUpload(base64ToFile(res1.data.base64)).then((res2) => {
-            let prefix = ['x64Mac', 'arm64Mac'].includes(getPosType()) ? 'file:/' : 'file://';//kindeditor的话mac是file:/，win是file://
+            let prefix = ['x64Mac', 'arm64Mac'].includes(getPosType()) ? 'file:/' : 'file://'; //kindeditor的话mac是file:/，win是file://
             this.newImgUrlList.push({
               originUrl: prefix + res1.data.filePath,
               url: 'http:' == location.protocol ? res2.data.fileUrl : replaceHttpImgToHttps(res2.data.fileUrl),
@@ -110,7 +106,7 @@ export default {
           if (replaceImage(newImgUrlList[i].src)) {
             let filePath = ['x64Mac', 'arm64Mac'].includes(getPosType()) ? newImgUrlList[i].src.slice(6) : newImgUrlList[i].src.slice(8);
             this.$socket.emit('getImgByLocal', {
-              'filePath': filePath,
+              filePath: filePath,
             });
           }
         }
@@ -120,5 +116,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

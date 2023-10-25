@@ -81,5 +81,6 @@ module.exports = {
     'vue/no-v-html': 'off',
     'global-require': 0, //避免控制台warning unexpected require()
     'vue/html-self-closing': 'off',
+    'vue/singleline-html-element-content-newline': 'off',
   },
 };

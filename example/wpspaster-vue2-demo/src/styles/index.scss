@@ -11,6 +11,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  font-size: 14px;
 }
 
 label {
@@ -20,6 +21,7 @@ label {
 html {
   height: 100%;
   box-sizing: border-box;
+  font-size: 14px;
 }
 
 #app {
@@ -209,6 +211,22 @@ aside {
   margin-right: 15px;
 }
 
+.mt10 {
+  margin-top: 10px;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
 .center {
   text-align: center;
   justify-content: center;
@@ -245,4 +263,9 @@ aside {
 //tooltip换行
 .el-tooltip__popper {
   max-width: 40%;
+}
+
+//提示
+.tip {
+  color: $--color-warning;
 }

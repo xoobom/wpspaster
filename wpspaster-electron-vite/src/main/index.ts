@@ -91,6 +91,6 @@ app.on('window-all-closed', () => {
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors(); //允许跨域
-  await app.listen(9000); //renderer http://127.0.0.1:5173
+  await app.listen(12237); //renderer http://127.0.0.1:5173
 }
 bootstrap();

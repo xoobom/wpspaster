@@ -558,3 +558,8 @@ export const replaceImage = (originUrl) => {
 export const replaceHttpImgToHttps = (httpImg) => {
   return 'https://xoobom.com:8024' + httpImg.slice(27);
 };
+
+//wpspaster下载
+export const wpspasterDownload = () => {
+  window.open('https://gitee.com/xoobom/wpspaster/releases');
+};

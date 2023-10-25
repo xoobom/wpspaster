@@ -112,7 +112,7 @@ export default {
   sockets: {
     //连接错误
     connect_error() {
-      customProtocolCheckFunc('wpspaster://');//协议是否注册。有注册就打开
+      // customProtocolCheckFunc('wpspaster://');//协议是否注册。有注册就打开
     },
   },
   beforeDestroy() {

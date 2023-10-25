@@ -1,19 +1,22 @@
 <template>
   <div class="app-container">
     <ckeditor v-model="editorData" :editor="editor" :config="editorConfig" @ready="onReady" />
+    <wpspasterTip></wpspasterTip>
   </div>
 </template>
 
 <script>
 import CKEditor from '@ckeditor/ckeditor5-vue2';
-import ClassicEditor from 'ckeditor5-custom-build';//npm i ./public/resource/ckeditor
+import ClassicEditor from 'ckeditor5-custom-build'; //npm i ./public/resource/ckeditor
 import { fileUpload } from '@/api/file';
-import { getPosType, backslashToSlash, customProtocolCheckFunc, replaceImage, base64ToFile,replaceHttpImgToHttps } from '@/utils/index';
+import { getPosType, backslashToSlash, customProtocolCheckFunc, replaceImage, base64ToFile, replaceHttpImgToHttps } from '@/utils/index';
 import MyUploadAdapter from './MyUploadAdapter.js';
+import wpspasterTip from '@/components/wpspaster-tip/index.vue';
 
 export default {
   components: {
     ckeditor: CKEditor.component,
+    wpspasterTip,
   },
   data() {
     return {
@@ -43,7 +46,7 @@ export default {
           supportAllValues: true,
         },
       },
-      newImgUrlList: [],//图片数组
+      newImgUrlList: [], //图片数组
       myEditor: null,
     };
   },
@@ -54,29 +57,23 @@ export default {
           let content = this.myEditor.getData();
           if (this.newImgUrlList.length > 0) {
             if (replaceImage(this.newImgUrlList[0].originUrl)) {
-              content = content.replace(
-                /<img [^>]*src=['"]([^'"]+)[^>]*>/gi,
-                (mactch, capture) => {
-                  let current = '';
-                  for (let i = 0; i < this.newImgUrlList.length; i++) {
-                    let sourcePath = '';//粘贴原路径
-                    if (getPosType() == 'win') {
-                      sourcePath = backslashToSlash(capture.replace(/(&amp;)/gi, '&'));
-                    } else {
-                      sourcePath = capture.replace(/(&amp;)/gi, '&');
-                    }
-                    if (sourcePath == this.newImgUrlList[i].originUrl) {
-                      current = this.newImgUrlList[i].url;
-                      break;
-                    }
+              content = content.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, (mactch, capture) => {
+                let current = '';
+                for (let i = 0; i < this.newImgUrlList.length; i++) {
+                  let sourcePath = ''; //粘贴原路径
+                  if (getPosType() == 'win') {
+                    sourcePath = backslashToSlash(capture.replace(/(&amp;)/gi, '&'));
+                  } else {
+                    sourcePath = capture.replace(/(&amp;)/gi, '&');
                   }
-                  current = current ? current : capture;
-                  return mactch.replace(
-                    /src=[\'\"]?([^\'\"]*)[\'\"]?/i,
-                    `src="${current}"`,
-                  );
-                },
-              );
+                  if (sourcePath == this.newImgUrlList[i].originUrl) {
+                    current = this.newImgUrlList[i].url;
+                    break;
+                  }
+                }
+                current = current ? current : capture;
+                return mactch.replace(/src=[\'\"]?([^\'\"]*)[\'\"]?/i, `src="${current}"`);
+              });
               this.myEditor.setData(content);
             }
           } // 匹配并替换 img中src图片路径
@@ -92,7 +89,7 @@ export default {
   sockets: {
     //连接错误
     connect_error() {
-      customProtocolCheckFunc('wpspaster://');//协议是否注册。有注册就打开
+      // customProtocolCheckFunc('wpspaster://'); //协议是否注册。有注册就打开
     },
   },
   beforeDestroy() {
@@ -134,7 +131,7 @@ export default {
               if (replaceImage(newImgUrlList[i].src)) {
                 let filePath = ['x64Mac', 'arm64Mac'].includes(getPosType()) ? newImgUrlList[i].src.slice(7) : newImgUrlList[i].src.slice(8);
                 this.$socket.emit('getImgByLocal', {
-                  'filePath': filePath,
+                  filePath: filePath,
                 });
               }
             }
@@ -142,7 +139,7 @@ export default {
         });
       });
       // 自定义上传图片插件
-      editor.plugins.get('FileRepository').createUploadAdapter = loader => {
+      editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
         return new MyUploadAdapter(loader);
       };
     },

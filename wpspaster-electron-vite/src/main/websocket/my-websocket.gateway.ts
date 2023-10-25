@@ -11,7 +11,7 @@ import { Socket } from 'socket.io';
 const fs = require('fs');
 
 @UseInterceptors(new WsServiceResponseInterceptor())
-@WebSocketGateway(9001, {
+@WebSocketGateway(12238, {
   transports: ['websocket'],
 })
 @Controller()

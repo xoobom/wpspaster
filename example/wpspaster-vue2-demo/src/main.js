@@ -23,7 +23,7 @@ Vue.use(
     options: {
       autoConnect: false, //创建时是否自动连接，默认关闭，使用时用open开启链接
     },
-    connection: SocketIO('http://127.0.0.1:9001', {
+    connection: SocketIO('http://127.0.0.1:12238', {
       transports: ['websocket'], //不加这个会跨域
       autoConnect: false, //是否自动连接
       reconnection: false, //关闭重连

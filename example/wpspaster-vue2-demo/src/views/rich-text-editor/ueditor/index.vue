@@ -1,6 +1,7 @@
 <template>
   <div class="app-container">
     <VueUeditorWrap v-model="content" :config="editorConfig" @ready="ready" />
+    <wpspasterTip></wpspasterTip>
   </div>
 </template>
 
@@ -8,10 +9,12 @@
 import VueUeditorWrap from 'vue-ueditor-wrap';
 import { fileUpload } from '@/api/file';
 import { getPosType, backslashToSlash, customProtocolCheckFunc, replaceImage, base64ToFile, replaceHttpImgToHttps } from '@/utils/index';
+import wpspasterTip from '@/components/wpspaster-tip/index.vue';
 
 export default {
   components: {
     VueUeditorWrap,
+    wpspasterTip,
   },
   data() {
     return {
@@ -22,7 +25,7 @@ export default {
         // 服务端接口（这个地址是我为了方便各位体验文件上传功能搭建的临时接口，请勿在生产环境使用！！！）
         serverUrl: '',
       },
-      newImgUrlList: [],//图片数组
+      newImgUrlList: [], //图片数组
       myEditor: null,
     };
   },
@@ -33,29 +36,23 @@ export default {
           let content = this.myEditor.getContent();
           if (this.newImgUrlList.length > 0) {
             if (replaceImage(this.newImgUrlList[0].originUrl)) {
-              content = content.replace(
-                /<img [^>]*src=['"]([^'"]+)[^>]*>/gi,
-                (mactch, capture) => {
-                  let current = '';
-                  for (let i = 0; i < this.newImgUrlList.length; i++) {
-                    let sourcePath = '';//粘贴原路径
-                    if (getPosType() == 'win') {
-                      sourcePath = backslashToSlash(capture.replace(/(&amp;)/gi, '&'));
-                    } else {
-                      sourcePath = capture.replace(/(&amp;)/gi, '&');
-                    }
-                    if (sourcePath == this.newImgUrlList[i].originUrl) {
-                      current = this.newImgUrlList[i].url;
-                      break;
-                    }
+              content = content.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, (mactch, capture) => {
+                let current = '';
+                for (let i = 0; i < this.newImgUrlList.length; i++) {
+                  let sourcePath = ''; //粘贴原路径
+                  if (getPosType() == 'win') {
+                    sourcePath = backslashToSlash(capture.replace(/(&amp;)/gi, '&'));
+                  } else {
+                    sourcePath = capture.replace(/(&amp;)/gi, '&');
                   }
-                  current = current ? current : capture;
-                  return mactch.replace(
-                    /src=[\'\"]?([^\'\"]*)[\'\"]?/i,
-                    `src="${current}"`,
-                  );
-                },
-              );
+                  if (sourcePath == this.newImgUrlList[i].originUrl) {
+                    current = this.newImgUrlList[i].url;
+                    break;
+                  }
+                }
+                current = current ? current : capture;
+                return mactch.replace(/src=[\'\"]?([^\'\"]*)[\'\"]?/i, `src="${current}"`);
+              });
               this.myEditor.setContent(content);
             }
           } // 匹配并替换 img中src图片路径
@@ -71,7 +68,7 @@ export default {
   sockets: {
     //连接错误
     connect_error() {
-      customProtocolCheckFunc('wpspaster://');//协议是否注册。有注册就打开
+      // customProtocolCheckFunc('wpspaster://'); //协议是否注册。有注册就打开
     },
   },
   beforeDestroy() {
@@ -113,7 +110,7 @@ export default {
             if (replaceImage(newImgUrlList[i].src)) {
               let filePath = ['x64Mac', 'arm64Mac'].includes(getPosType()) ? newImgUrlList[i].src.slice(7) : newImgUrlList[i].src.slice(8);
               this.$socket.emit('getImgByLocal', {
-                'filePath': filePath,
+                filePath: filePath,
               });
             }
           }
@@ -124,5 +121,4 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
