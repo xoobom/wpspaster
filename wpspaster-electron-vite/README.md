@@ -24,7 +24,8 @@ npm run dev
 # 打包
 
 ```
-npm run build
+npm run build:win
+npm run build:mac
 ```
 
 # electron f12
