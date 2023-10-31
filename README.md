@@ -48,9 +48,9 @@ https://b23.tv/0eJoIxh
 
 ## Wpspaster run
 
-win：wpspaster-v2.0.0.exe
+Installation startup: Start after installation of the installation package in releases
 
-mac：wpspaster-v2.0.0.dmg
+Start locally: Start the wpspaster-electron-vite project locally
 
 
 
