@@ -48,21 +48,21 @@
 
 ## Wpspaster启动
 
-win启动：wpspaster-v2.0.0.exe
+安装启动：releases里的安装包安装后启动
 
-mac启动：wpspaster-v2.0.0.dmg
+本地启动：本地启wpspaster-electron-vite工程
 
 
 
 ## 图片上传接口启动
 
-本地启wpspaster-backend项目
+本地启wpspaster-backend工程
 
 
 
 ## Vue2项目启动
 
-本地启wpspaster-vue2-demo项目
+本地启wpspaster-vue2-demo工程
 
 
 
