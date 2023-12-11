@@ -99,8 +99,15 @@ vscode装插件Live Server，右键index.html页面Open with Live Server启动�
 
 ```
 sudo xattr -d com.apple.quarantine /Applications/Wpspaster.app
+```
+
+或者
+
+```
 xattr -cr /Applications/Wpspaster.app
 ```
+
+
 
 ## 其他问题
 

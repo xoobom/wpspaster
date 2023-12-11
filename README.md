@@ -99,8 +99,15 @@ Enter the command in the terminal:
 
 ```
 sudo xattr -d com.apple.quarantine /Applications/Wpspaster.app
+```
+
+or
+
+```
 xattr -cr /Applications/Wpspaster.app
 ```
+
+
 
 ## Others
 
