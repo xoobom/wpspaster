@@ -5,6 +5,7 @@ node18
 # 下载依赖
 
 ```
+npm config set registry https://registry.npmmirror.com/
 npm install
 ```
 

@@ -5,6 +5,7 @@ node版本18
 # 安装依赖
 
 ```bush
+npm config set registry https://registry.npmmirror.com/
 npm install
 ```
 
