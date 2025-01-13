@@ -6,9 +6,7 @@
 
 图文一键粘贴软件，支持从Word、WPS图文复制后一键粘贴到Tinymce、CKEditor、UEditor、KindEditor等富文本编辑器。支持Chrome、360、Edge、Firefox等现代浏览器。适用Window、Mac
 
-- [在线体验](http://xoobom.com:8020/#/rich-text-editor/tinymce) 
 - [软件下载](https://github.com/xoobom/wpspaster/releases)
-- [gitee](https://gitee.com/xoobom/wpspaster)
 - [github](https://github.com/xoobom/wpspaster)
 
 <div>
@@ -39,12 +37,6 @@
 
 
 # 使用说明
-
-## 视频演示
-
-【wpspaster工程运行演示-哔哩哔哩】 https://b23.tv/0eJoIxh
-
-
 
 ## Wpspaster启动
 
@@ -130,8 +122,9 @@ https://h1o5fjihr4.feishu.cn/wiki/WQjfwaubgi3N50kjO6ecpCtOn1g?from=from_copylink
 QQ号：3194249968
 
 <div>
-  <img width="250" src="./img/QQ.jpg">
+  <img width="250" src="./img/QQ.jpg?v=1">
 </div>
+
 
 
 
