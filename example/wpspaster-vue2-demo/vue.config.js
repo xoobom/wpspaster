@@ -104,6 +104,9 @@ module.exports = {
       warnings: false,
       errors: true,
     },
+    watchOptions: {
+      poll: 1000 // 每秒检查一次文件变化
+    },
     proxy: {
       '/wpspaster': {
         target: 'http://127.0.0.1:8023',
