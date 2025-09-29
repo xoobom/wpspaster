@@ -211,19 +211,37 @@ export default {
           });
           editor.on('OpenWindow', (e, a) => {
             if (document.querySelector('.tox-dialog__header').innerText == '插入/编辑图片') {
-              document.querySelector('.tox-dialog__body-nav-item:nth-child(2)').click(); // 自动切换到上传选项卡
-
               // 延迟执行以确保DOM已渲染
               setTimeout(() => {
+                // 点击上传选项卡
+                const uploadTab = document.querySelector('.tox-dialog__body-nav-item:nth-child(2)');
+                if (uploadTab) {
+                  uploadTab.click();
+
+                  // 给上传选项卡添加焦点样式
+                  uploadTab.focus();
+                  uploadTab.classList.add('focused');
+                }
+
                 // 监听选项卡点击事件
                 const tabItems = document.querySelectorAll('.tox-dialog__body-nav-item');
-                tabItems.forEach((tab) => {
+                tabItems.forEach((tab, index) => {
                   tab.addEventListener('click', () => {
+                    // 移除所有选项卡的焦点样式
+                    tabItems.forEach((item) => {
+                      item.classList.remove('focused');
+                      item.blur(); // 移除焦点
+                    });
+
+                    // 给当前点击的选项卡添加焦点样式
+                    tab.classList.add('focused');
+                    tab.focus();
+
                     // 延迟执行以确保选项卡内容已加载
                     setTimeout(() => {
-                      // 检查当前激活的选项卡是否是普通选项卡
-                      const activeTab = document.querySelector('.tox-dialog__body-nav-item--active');
-                      if (activeTab && activeTab.textContent.includes('普通')) {
+                      // 检查当前激活的选项卡是否是普通选项卡（第一个选项卡）
+                      if (index === 0) {
+                        // 普通选项卡
                         // 给地址输入框设置readonly属性
                         const sourceInputs = document.querySelectorAll('.tox-textfield');
                         sourceInputs.forEach((input) => {
