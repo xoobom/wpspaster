@@ -245,7 +245,7 @@ export default {
                         // 给地址输入框设置readonly属性
                         const sourceInputs = document.querySelectorAll('.tox-textfield');
                         sourceInputs.forEach((input) => {
-                          if (input.getAttribute('aria-label') === '来源' || input.placeholder.includes('http') || input.type === 'url') {
+                          if (input.type === 'url') {
                             input.setAttribute('readonly', 'readonly');
                             input.style.backgroundColor = '#f5f5f5';
                           }
@@ -312,6 +312,16 @@ export default {
             formData = new FormData();
             formData.append('file', file);
             fileUpload(formData).then((res) => {
+              setTimeout(() => {
+                // 给地址输入框设置readonly属性
+                const sourceInputs = document.querySelectorAll('.tox-textfield');
+                sourceInputs.forEach((input) => {
+                  if (input.type === 'url') {
+                    input.setAttribute('readonly', 'readonly');
+                    input.style.backgroundColor = '#f5f5f5';
+                  }
+                });
+              }, 100);
               resolve('http:' == location.protocol ? res.data.fileUrl : replaceHttpImgToHttps(res.data.fileUrl));
             });
           }),
