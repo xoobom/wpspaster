@@ -189,6 +189,12 @@ export default {
         link_title: false,
         nonbreaking_force_tab: true, // inserting nonbreaking space &nbsp; need Nonbreaking Space Plugin
         // image_dimensions: false,
+        // 使用自定义文件选择器
+        file_picker_types: 'image',
+        file_picker_callback: function (callback, value, meta) {
+          // 只允许上传图片，不提供URL输入
+          document.querySelector('.tox-dialog__body-nav-item:nth-child(2)').click(); // 自动切换到上传选项卡
+        },
         init_instance_callback: (editor) => {
           if (_this.value) {
             editor.setContent(_this.value);
@@ -202,6 +208,11 @@ export default {
         setup(editor) {
           editor.on('FullscreenStateChanged', (e) => {
             _this.fullscreen = e.state;
+          });
+          editor.on('OpenWindow', (e, a) => {
+            if (document.querySelector('.tox-dialog__header').innerText == '插入/编辑图片') {
+              document.querySelector('.tox-dialog__body-nav-item:nth-child(2)').click(); // 自动切换到上传选项卡
+            }
           });
         },
         convert_urls: false,
