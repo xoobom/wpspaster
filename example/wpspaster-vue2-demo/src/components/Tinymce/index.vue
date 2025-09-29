@@ -212,6 +212,31 @@ export default {
           editor.on('OpenWindow', (e, a) => {
             if (document.querySelector('.tox-dialog__header').innerText == '插入/编辑图片') {
               document.querySelector('.tox-dialog__body-nav-item:nth-child(2)').click(); // 自动切换到上传选项卡
+
+              // 延迟执行以确保DOM已渲染
+              setTimeout(() => {
+                // 监听选项卡点击事件
+                const tabItems = document.querySelectorAll('.tox-dialog__body-nav-item');
+                tabItems.forEach((tab) => {
+                  tab.addEventListener('click', () => {
+                    // 延迟执行以确保选项卡内容已加载
+                    setTimeout(() => {
+                      // 检查当前激活的选项卡是否是普通选项卡
+                      const activeTab = document.querySelector('.tox-dialog__body-nav-item--active');
+                      if (activeTab && activeTab.textContent.includes('普通')) {
+                        // 给地址输入框设置readonly属性
+                        const sourceInputs = document.querySelectorAll('.tox-textfield');
+                        sourceInputs.forEach((input) => {
+                          if (input.getAttribute('aria-label') === '来源' || input.placeholder.includes('http') || input.type === 'url') {
+                            input.setAttribute('readonly', 'readonly');
+                            input.style.backgroundColor = '#f5f5f5';
+                          }
+                        });
+                      }
+                    }, 50);
+                  });
+                });
+              }, 100);
             }
           });
         },
