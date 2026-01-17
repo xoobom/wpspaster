@@ -15,6 +15,7 @@ import toolbar from './toolbar';
 import load from './dynamicLoadScript';
 import { fileUpload, getFileStream, batchget_material } from '@/api/file';
 import { getPosType, backslashToSlash, customProtocolCheckFunc, replaceImage, base64ToFile, replaceHttpImgToHttps } from '@/utils/index';
+// import { formatContentImages } from '@/utils/replace-img';
 // const tinymceCDN = 'https://cdn.jsdelivr.net/npm/tinymce-all-in-one@4.9.3/tinymce.min.js';
 const tinymceCDN = '/resource/tinymce/tinymce.min.js';
 
@@ -202,6 +203,7 @@ export default {
           _this.hasInit = true;
           editor.on('NodeChange Change KeyUp SetContent', () => {
             this.hasChange = true;
+            // console.log(formatContentImages(editor.getContent(), 'https://baidu.com'));
             this.$emit('input', editor.getContent());
           });
         },
